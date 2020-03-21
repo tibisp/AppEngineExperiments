@@ -1,0 +1,8 @@
+Delete passwords from GITHUB
+https://rtyley.github.io/bfg-repo-cleaner/
+
+java -jar bfg.jar --replace-text KEYWORDS.txt AppEngineExperiments.git
+cd AppEngineExperiments.git
+git reflog expire --expire=now --all 
+git gc --prune=now --aggressive
+git push
