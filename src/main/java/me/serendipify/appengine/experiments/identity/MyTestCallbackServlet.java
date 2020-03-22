@@ -37,8 +37,9 @@ public class MyTestCallbackServlet extends HttpServlet {
 
 	private static String linkedinProfileUrl = "https://api.linkedin.com/v2/me";
 	private static String redirectURI = "http://localhost:8080/login/oauth/mytest/callback";
+	
 	private static String linkedInAccessTokenURI = "https://www.linkedin.com/oauth/v2/accessToken";
-
+	//https://accounts.google.com/o/oauth2/v2/auth
 	private static String linkedInSerendipifyMeClientId = "<ENTER_YOURS>";
 	//FIXME: Keep SUPER SECURE
 	private static String linkedInSerendipifyMeClientSecret = "<ENTER_YOURS>";
