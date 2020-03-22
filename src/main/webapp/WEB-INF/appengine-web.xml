@@ -15,6 +15,7 @@
         <include path="/**.gif" expiration="5d 0h" />
         <include path="/**.jpg" expiration="5d 0h"/>
         <include path="/**.css" expiration="5d 0h"/>
+        <include path="/**.html" expiration="5d 0h"/>
         <include path="/js-lib/**.*" expiration="5d 0h"/>
         <include path="/js-scripts/**.*" />
         <include path="/style/**.*" expiration="5d 0h"/>
