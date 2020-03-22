@@ -78,7 +78,7 @@ public class MyTestCallbackServlet extends HttpServlet {
 		}
 
 		response.setStatus(200);
-		response.sendRedirect(redirectURI);
+		response.sendRedirect("http://localhost:8080/success.html");
 		return;
 	}
 
