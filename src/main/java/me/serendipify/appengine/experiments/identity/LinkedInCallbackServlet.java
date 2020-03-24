@@ -35,11 +35,11 @@ public class LinkedInCallbackServlet extends HttpServlet {
 
 	private static String linkedinProfileUrl = "https://api.linkedin.com/v2/me";
 	private static String callbackURI = "http://localhost:8080/login/oauth/linkedin/callback";
-	private static String redirectURI = "http://localhost:8080/linkedin-test/authorized.jsp";
+	private static String redirectURI = "http://localhost:8080/success.html";
 
-	private static String linkedInSerendipifyMeClientId = "<ENTER_YOURS>";
+	private static String linkedInSerendipifyMeClientId = "77mnbvdv2hbci8";
 	//FIXME: Keep SUPER SECURE
-	private static String linkedInSerendipifyMeClientSecret = "<ENTER_YOURS>";
+	private static String linkedInSerendipifyMeClientSecret = "<SECRET>";
 
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -99,10 +99,6 @@ public class LinkedInCallbackServlet extends HttpServlet {
 					return;
 				}
 				accessToken = accessTokenObject.getString("access_token");
-				//String debugToken = "AQV0mkh3vDqF3-8Z7QCgM4KcqLD6355_PVe1HVfytA7_tgSFS-r3_VobyKC53LpBm8PrvD8x_1vVEmlfelaBYvsmnSZY91rJRY3v49nioD8iuQ0ysuqx2xMO_9PcMDTL7o3dcLabrb8WHipF91vrm4MhiZh8SbY3kpx0IxuzbFZQCNQPRmrNM0_BhPqie1PaJB2VsKauMDFq4nGeM1m2yu3LYxgft_i--z5kOZ5zY2_KJYXSyFWTxJKZTL1393RfsvGRyj6t1xU71S1e5oXWtNhK8hn5tZKZyi_BaGqLXqXkYL0skMNPcba-9ZFiXywB-HbqdnDGpvpozUIWUhdr5Yx9s_myzg";
-
-				//AQWgyPY92wNXqjo85Wfqtcf-8av3cg5-1kTTu_HWFITbV4URBIIO0nbRIsFkRGc6O6Qz_yz-9wFf9dfbhwV2ucPfgR9Q-QdmSmPxmXVo0jeUdm7gdDXt_W5GDJDDIXaLaTB0RQHyDDQlvv2ottmIib2fzexOyDq7WwUB65iaUOI3s7RtjhFr3nWpSJKwEld9TdQ7I8j7dTn5C0Zm32FCW6CxTjzr5bt0s_YYBImnELSCTt_LjNgwnWoXAywwBr5XM_dkvC9HSpUlUCjRaygua8QXWfAqypEQqF38uC9bXLqBxKogc6NH198vMjel-_YKh7WB-dHJKDEfA7TKY2jGor9aPQFX6Q
-				//AQVw4h9qKkaEhgbSz-qUCsAvVQonZEYhNztJzOkfUfHNvZflfZEHPUuSFrwm3djhZDlObJzmy0pBY4wx_K0-7RW8qMdzlPWYM2zzkozGc_3jXZDO2miMv-o57CuyDuGWKtf9p8jInMb0_NkznRWL_i3lZ5qjyY6YwqOOjdrTBW_Oh7RXfyMuGioa_HCv77TM7kDxtsHPQyvv3-8smsDZIFz2x5U_MhCxsTMYp7XQbgD4rijzD8Gd3yDHh36RbDRlhM1knUR_bYV7vn-5KPFdEXNyP0D17bJCetoNNIaXquVX43A1SXTEZNXh5GbFWpv1Pl7chkMl0kfTGcaJDPQM1be6Znm18A
 
 				logger.info("ACCESS TOKEN: "+accessToken);
 

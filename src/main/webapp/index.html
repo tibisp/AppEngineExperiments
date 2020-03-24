@@ -6,6 +6,34 @@
   </head>
 
   <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	console.log("Running NEW login-linkedin.js");
+	  $("#logInWithLinkedInButton").click(function(event){
+		  event.preventDefault();
+		  console.log("CLICKED");
+		  stateSalt = "foobar";
+		  
+			var requestData = {
+					newLoginWithLinkedIn:  "",
+					redirectURI: 	"/",
+					state:	stateSalt,
+			}
+			$.get("/hello", requestData, function(responseData) {
+				console.log(responseData);
+			});
+
+		//$(location).attr('href',"https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77mnbvdv2hbci8&redirect_uri=http%3A%2F%2Flocalhost:8080%2Flogin%2Foauth%2Flinkedin%2Fcallback&state="+stateSalt+"&scope=r_liteprofile%20r_emailaddress");
+
+	  });	  
+});
+
+</script>
+
+
+
     <h1>Hello App Engine!</h1>
 
     <table>
@@ -17,5 +45,14 @@
       </tr>
       
     </table>
+    
+    <p></p>
+	<button class="btn btn-md btn-default btn-block" type="button" id="logInWithLinkedInButton">LinkedIn Login</button>
+        
   </body>
+  
+  
+
+  
+  
 </html>

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 /*
 import java.security.GeneralSecurityException;
@@ -43,6 +44,8 @@ public class HelloAppEngine extends HttpServlet {
 	 * */
 	private static final long serialVersionUID = 12L;
 
+	private static final Logger log = Logger.getLogger(HelloAppEngine.class.getName());
+	
 	/*
 	private static String callbackURI = "http://localhost:8080/login/oauth/mytest/callback";
 	private static String linkedInAuthorizationURI = "https://www.linkedin.com/oauth/v2/authorization";
@@ -51,7 +54,7 @@ public class HelloAppEngine extends HttpServlet {
 	
 	private static String callbackURI = "http://localhost:8080/login/oauth/google/callback";
 	private static String linkedInAuthorizationURI = "https://accounts.google.com/o/oauth2/v2/auth";
-	private static String linkedInSerendipifyMeClientId = "<ENTER_YOURS>";
+	private static String linkedInSerendipifyMeClientId = "77mnbvdv2hbci8";
 
 	/*
 	private static HttpTransport httpTransport = null;
@@ -73,6 +76,30 @@ public class HelloAppEngine extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws IOException {
+		
+		
+		/* ----- NEW LINKEDIN LOGIN ---- */
+		
+		//THIS IS CALLED VIA THE BUTTON
+		
+		if (request.getParameter("newLoginWithLinkedIn") != null) {
+			
+			String accessState = request.getParameter("state");
+			
+			String url = new GoogleAuthorizationCodeRequestUrl(linkedInAuthorizationURI,
+			linkedInSerendipifyMeClientId, callbackURI, SCOPES).setState(accessState).build();
+			log.info("newLoginWithLinkedIn GENERATED REDIRECT: "+url);
+				
+			//	//resp.setHeader(req.getSession().getId(), "Access-Control-Allow-Origin: *");
+			//	resp.addHeader("Origin", "http://localhost:8080");
+			//	resp.addHeader("Access-Control-Allow-Origin", "*");
+			//	resp.addHeader("Access-Control-Allow-Methods","GET, OPTIONS, HEAD, PUT, POST");
+			response.sendRedirect(url);	
+			return;			
+		}
+
+		
+		
 		/*
 		try {
 			httpTransport = GoogleNetHttpTransport.newTrustedTransport();
