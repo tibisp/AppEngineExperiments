@@ -54,7 +54,7 @@ public class HelloAppEngine extends HttpServlet {
 	
 	private static String callbackURI = "http://localhost:8080/login/oauth/google/callback";
 	private static String linkedInAuthorizationURI = "https://accounts.google.com/o/oauth2/v2/auth";
-	private static String linkedInSerendipifyMeClientId = "77mnbvdv2hbci8";
+	private static String linkedInSerendipifyMeClientId = "<ENTER_YOURS>";
 
 	/*
 	private static HttpTransport httpTransport = null;
@@ -90,10 +90,10 @@ public class HelloAppEngine extends HttpServlet {
 			linkedInSerendipifyMeClientId, callbackURI, SCOPES).setState(accessState).build();
 			log.info("newLoginWithLinkedIn GENERATED REDIRECT: "+url);
 				
-			//	//resp.setHeader(req.getSession().getId(), "Access-Control-Allow-Origin: *");
-			//	resp.addHeader("Origin", "http://localhost:8080");
-			//	resp.addHeader("Access-Control-Allow-Origin", "*");
-			//	resp.addHeader("Access-Control-Allow-Methods","GET, OPTIONS, HEAD, PUT, POST");
+			//  response.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+			//  response.addHeader("Origin", "http://localhost:8080");
+			//	response.addHeader("Access-Control-Allow-Origin", "*");
+			//	response.addHeader("Access-Control-Allow-Methods","GET, OPTIONS, HEAD, PUT, POST");
 			response.sendRedirect(url);	
 			return;			
 		}
