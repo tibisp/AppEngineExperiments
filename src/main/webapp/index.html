@@ -8,6 +8,7 @@
   <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	console.log("Running NEW login-linkedin.js");
@@ -15,21 +16,40 @@ $(document).ready(function() {
 		  event.preventDefault();
 		  console.log("CLICKED");
 		  stateSalt = "foobar";
+		  csrfToken = "3716JHAHhgfhgfff92";
 		  
-			var requestData = {
-					newLoginWithLinkedIn:  "",
-					redirectURI: 	"/",
-					state:	stateSalt,
-			}
-			$.get("/hello", requestData, function(responseData) {
-				console.log(responseData);
+//			var requestData = {
+//					newLoginWithLinkedIn:  "",
+//					redirectURI: 	"/",
+//					state:	stateSalt,
+//			}
+						
+//			$.get("/hello", requestData, function(responseData) {
+//				console.log(responseData);
+//			});
+			
+
+	      Ext.Ajax.setUseDefaultXhrHeader(false);
+		  Ext.Ajax.setCors(false);
+		  Ext.Ajax.request({
+				xhrFields : {
+					withCredentials : true
+				},
+				method : 'GET',
+			    url : '/hello?newLoginWithLinkedIn=&redirectURI=%2F&state=' + stateSalt + '&csrf-token=' + csrfToken,
+				success : function(response, opts) {
+													var obj = Ext.decode(response.responseText);
+													console.dir(obj);
+												   },
+				failure : function(response, opts) {
+													console.log('server-side failure with status code ' + response.status);
+												    }
+							});
+
+	//$(location).attr('href',"https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77mnbvdv2hbci8&redirect_uri=http%3A%2F%2Flocalhost:8080%2Flogin%2Foauth%2Flinkedin%2Fcallback&state="+stateSalt+"&scope=r_liteprofile%20r_emailaddress");
+
 			});
-
-		//$(location).attr('href',"https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77mnbvdv2hbci8&redirect_uri=http%3A%2F%2Flocalhost:8080%2Flogin%2Foauth%2Flinkedin%2Fcallback&state="+stateSalt+"&scope=r_liteprofile%20r_emailaddress");
-
-	  });	  
-});
-
+ });
 </script>
 
 
@@ -48,7 +68,7 @@ $(document).ready(function() {
     
     <p></p>
 	<button class="btn btn-md btn-default btn-block" type="button" id="logInWithLinkedInButton">LinkedIn Login</button>
-        
+ 
   </body>
   
   

@@ -38,10 +38,10 @@ public class GoogleCallbackServlet extends HttpServlet {
 	private static String linkedinProfileUrl = "https://api.linkedin.com/v2/me";
 	private static String redirectURI = "http://localhost:8080/login/oauth/google/callback";
 	
-	private static String linkedInAccessTokenURI = "https://oauth2.googleapis.com/token";
-	private static String linkedInSerendipifyMeClientId = "<ENTER_YOURS>";
+	private static String googleInAccessTokenURI = "https://oauth2.googleapis.com/token";
+	private static String googleInSerendipifyMeClientId = "<ENTER_YOURS>";
 	//FIXME: Keep SUPER SECURE
-	private static String linkedInSerendipifyMeClientSecret = "<ENTER_YOURS>";
+	private static String googleInSerendipifyMeClientSecret = "<SECRET>";
 
 	private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
@@ -104,19 +104,19 @@ public class GoogleCallbackServlet extends HttpServlet {
 			if(grandType.equals("authorization_code")) {
 				tokenResp = 
 						new AuthorizationCodeTokenRequest(new NetHttpTransport(), JSON_FACTORY, 
-								new GenericUrl(linkedInAccessTokenURI), code)
+								new GenericUrl(googleInAccessTokenURI), code)
 						.setRedirectUri(redirectURI)
 						.setGrantType(grandType)
 						.setClientAuthentication(
-								new ClientParametersAuthentication(linkedInSerendipifyMeClientId, linkedInSerendipifyMeClientSecret))
+								new ClientParametersAuthentication(googleInSerendipifyMeClientId, googleInSerendipifyMeClientSecret))
 						.execute();
 			} else if (grandType.equals("refresh_token")) {
 				tokenResp = 
 						new RefreshTokenRequest(new NetHttpTransport(), JSON_FACTORY, 
-								new GenericUrl(linkedInAccessTokenURI), code)
+								new GenericUrl(googleInAccessTokenURI), code)
 						.setGrantType(grandType)
 						.setClientAuthentication(
-								new ClientParametersAuthentication(linkedInSerendipifyMeClientId, linkedInSerendipifyMeClientSecret))
+								new ClientParametersAuthentication(googleInSerendipifyMeClientId, googleInSerendipifyMeClientSecret))
 						.execute(); 
 			} else {
 				logger.warning("Wrong param: " + grandType);
@@ -135,6 +135,7 @@ public class GoogleCallbackServlet extends HttpServlet {
 		return tokenResp;
 	}
 
+/*
 	public JsonObject loginStep3LinkedInRequestUserID(String accessToken) {
 		URL url;
 		try {
@@ -179,6 +180,6 @@ public class GoogleCallbackServlet extends HttpServlet {
 		}
 		return null;
 	}
-
+*/
 
 }
