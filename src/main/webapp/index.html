@@ -3,19 +3,29 @@
   <head>
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
     <title>Hello App Engine</title>
+    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    
   </head>
 
   <body>
     <h1>Hello App Engine!</h1>
 
-    <table>
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
-      </tr>
-      <tr>
-        <td><a href='/hello'>The servlet</a></td>
-      </tr>
+    <hr>
+    <p></p>
+    <div class="container">
+        <a href='/hello'>The OAuth Servlet</a>
+	</div>      
       
-    </table>
+    <hr>
+    <p></p>
+      	
+      <div class="container">
+    	A Java SAML Toolkit by OneLogin demo
+    	<p></p>
+		<a href="dologin.jsp" class="btn btn-primary">Login</a>
+		<a href="dologin.jsp?attrs=1" class="btn btn-primary" disabled=disabled>Login and access to attrs.jsp page </a>
+	</div>
+      
   </body>
 </html>

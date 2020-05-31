@@ -52,6 +52,13 @@
     <dependencies>
             
         <!-- Compile/runtime dependencies -->
+
+     <dependency>
+	      <groupId>com.onelogin</groupId>
+	      <artifactId>java-saml</artifactId>
+	      <version>2.5.0</version>
+	  </dependency>
+
             
         <dependency>
                   
